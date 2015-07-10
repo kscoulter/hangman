@@ -26,14 +26,14 @@ $("#letter").on("keypress", function(e){
       console.log(currentGuess);
       if(matchLetter() !== true){
         guessesLeft--;
+        if(guessesLeft === 0){
+          alert("Sorry - you lost the game!");
+        }
         guesses = guesses + currentGuess;
         $(".lettersGuessed").html(guesses);
         $(".remainingGuess").html(guessesLeft);
         console.log(guessesLeft);
       }
-    }
-    else {
-      console.log("you lose");
     }
   }
 })
@@ -64,3 +64,18 @@ function displayUpdate(i){
 $(".letterSpace").eq(i).show().css("display", "inline-block");
 $(".spaceBorder").eq(i).hide();
 }
+
+function resetGame(){
+  $(".letterSpace").remove();
+  $(".spaceBorder").remove();
+  $(".game-word").html("WORD");
+  var guessesLeft = 7;
+  var word = prompt("Choose a word to guess!");
+  var lettersArray = word.split("");
+  var numLetter = lettersArray.length;
+  var currentGuess;
+  var guesses = "";
+  showSpaces();
+}
+
+$("#newgame").on("click", resetGame)
