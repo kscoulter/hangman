@@ -11,6 +11,7 @@ var word = prompt("Choose a word to guess!");
 var lettersArray = word.split("");
 var numLetter = lettersArray.length;
 var currentGuess;
+var guesses = "";
 
 showSpaces();
 
@@ -23,8 +24,11 @@ $("#letter").on("keypress", function(e){
     $("#letter").val("");
     if(guessesLeft > 0 && currentGuess){
       console.log(currentGuess);
-      if(matchLetter() == false){
+      if(matchLetter() !== true){
         guessesLeft--;
+        guesses = guesses + currentGuess;
+        $(".lettersGuessed").html(guesses);
+        $(".remainingGuess").html(guessesLeft);
         console.log(guessesLeft);
       }
     }
@@ -45,18 +49,18 @@ function showSpaces() {
 
 // checks to see if user guess matches any of the letters in word
 function matchLetter(){
+  var foundLetter = false;
   for(var i = 0; i < numLetter; i++){
     if(currentGuess == lettersArray[i]) {
       console.log(i)
-      $(".letterSpace").eq(i).show().css("display", "inline-block");
-      $(".spaceBorder").eq(i).hide();
-      return true
-
+      displayUpdate(i);
+      foundLetter = true;
     }
   }
+  return foundLetter;
 }
 
-// display the solved guesses
-// function displayUpdate(){
-//   $(".letterSpace").eq(0).show()
-// }
+function displayUpdate(i){
+$(".letterSpace").eq(i).show().css("display", "inline-block");
+$(".spaceBorder").eq(i).hide();
+}

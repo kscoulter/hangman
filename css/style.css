@@ -86,3 +86,7 @@ body {
   width: 64px;
   display: inline-block;
 }
+
+.remainingGuess {
+  color: white;
+}
