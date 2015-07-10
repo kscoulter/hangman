@@ -72,3 +72,17 @@ body {
   margin-bottom: 50px;
   text-align: center;
 }
+
+/*our styles*/
+.letterSpace {
+  display: inline-block;
+  display: none;
+  position: absolute;
+}
+
+.spaceBorder{
+  border-bottom: 5px solid white;
+  margin-right: 15px;
+  width: 64px;
+  display: inline-block;
+}

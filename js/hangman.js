@@ -12,6 +12,8 @@ var lettersArray = word.split("");
 var numLetter = lettersArray.length;
 var currentGuess;
 
+showSpaces();
+
 //$(document).ready( function() {
 $("#letter").on("keypress", function(e){
 //  event.preventDefault();
@@ -19,28 +21,35 @@ $("#letter").on("keypress", function(e){
     event.preventDefault();
     var currentGuess = $("#letter").val()
     $("#letter").val("");
-    console.log(currentGuess);
     if(guessesLeft > 0 && currentGuess){
       console.log(currentGuess);
-      matchLetter()
+      if(!matchLetter()){
+        guessesLeft--;
+      }
     }
     else {
       console.log("you lose");
     }
   }
 })
+// adds enough spaces for the number of letters in word
+function showSpaces() {
+  $(".game-word").html("");
+  for (var i=0; i<numLetter; i++){
+    $(".game-word").append("<div class='letterSpace'>"+ lettersArray[i] +"</div>");
+    $(".game-word").append("<div class='spaceBorder'></div>");
+  }
+}
 
 
-
+// checks to see if user guess matches any of the letters in word
 function matchLetter(){
   for(var i = 0; i < numLetter; i++){
-    if(currentGuess === numLetter[i]) {
-      console.log("It worked!");
-      //.show()
+    if(currentGuess == lettersArray[i]) {
+      return true
     }
     else {
-      //display currentGuess in guess column
-      guessesLeft--;
+      return false
     }
   }
 }
