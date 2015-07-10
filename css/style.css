@@ -77,7 +77,7 @@ body {
 .letterSpace {
   display: inline-block;
   display: none;
-  position: absolute;
+  position: relative;
 }
 
 .spaceBorder{

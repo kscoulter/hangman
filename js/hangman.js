@@ -19,12 +19,13 @@ $("#letter").on("keypress", function(e){
 //  event.preventDefault();
   if(e.which === 13){
     event.preventDefault();
-    var currentGuess = $("#letter").val()
+    currentGuess = $("#letter").val()
     $("#letter").val("");
     if(guessesLeft > 0 && currentGuess){
       console.log(currentGuess);
-      if(!matchLetter()){
+      if(matchLetter() == false){
         guessesLeft--;
+        console.log(guessesLeft);
       }
     }
     else {
@@ -46,10 +47,16 @@ function showSpaces() {
 function matchLetter(){
   for(var i = 0; i < numLetter; i++){
     if(currentGuess == lettersArray[i]) {
+      console.log(i)
+      $(".letterSpace").eq(i).show().css("display", "inline-block");
+      $(".spaceBorder").eq(i).hide();
       return true
-    }
-    else {
-      return false
+
     }
   }
 }
+
+// display the solved guesses
+// function displayUpdate(){
+//   $(".letterSpace").eq(0).show()
+// }
