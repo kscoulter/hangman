@@ -90,6 +90,7 @@ var hangman = {
     }
     hangman.displayUpdate()
   },
+
   giveUp: function(){
     for(var i = 0; i<hangman.setup.word.length; i++){
       hangman.wordUpdate(i)
@@ -98,11 +99,12 @@ var hangman = {
 }
 
 hangman.runGame();
+//to start a new game, press on new game button
 $("#newgame").on("click", function(){
-  console.log("I'm here");
-  hangman.resetGame()
+  hangman.resetGame() //resets the setup values to default
   hangman.runGame()
 })
+//to give up press on give up button
 $("#giveup").on("click", function(){
-  hangman.giveUp()
+  hangman.giveUp()//display the word
 })
