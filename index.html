@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hangman</title>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  <ul class="game-state">
+    <li>
+      <p><label for="letter">Guess a Letter:</label></p>
+      <p><input type="text" id="letter"></p>
+    </li>
+    <li>
+      <p>Guesses:</p>
+      <p class="lettersGuessed"></p>
+    </li>
+    <li>
+      <p>Remaining:</p>
+      <p class="remainingGuess"></p>
+    </li>
+  </ul>
+
+  <div class="game-word">WORD</div>
+
+  <ul class="game-options">
+    <li><button id="giveup">Give Up</button></li>
+    <li><button id="newgame">New Game</button></li>
+  </ul>
+
+  <div class="game-result"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src='hangman.js'></script>
+</body>
+</html>
